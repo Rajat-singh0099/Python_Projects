@@ -1,6 +1,6 @@
 import math
 import time
-from player import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, SmartComputerPlayer
 
 
 class TicTacToe():
@@ -19,7 +19,8 @@ class TicTacToe():
     @staticmethod
     def print_board_nums():
         # 0 | 1 | 2
-        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
+        number_board = [[str(i) for i in range(j*3, (j+1)*3)]
+                        for j in range(3)]
         for row in number_board:
             print('| ' + ' | '.join(row) + ' |')
 
@@ -94,9 +95,8 @@ def play(game, x_player, o_player, print_game=True):
         print('It\'s a tie!')
 
 
-
 if __name__ == '__main__':
-    x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
+    x_player = SmartComputerPlayer('X')
+    o_player = HumanPlayer('O')
     t = TicTacToe()
     play(t, x_player, o_player, print_game=True)
